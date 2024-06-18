@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meloncat Clicker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        nav {
+            margin: 1rem;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin-right: 1rem;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+        main {
+            padding: 1rem;
+            text-align: center;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+        .centered-image {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+        .points {
+            font-size: 2rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Meloncat Clicker</h1>
+    </header>
+    <nav>
+        <ul>
+        </ul>
+    </nav>
+    <main>
+        <img src="C:\Users\Aries\OneDrive\Documents\GitHub\Clicker Game\meloncat.jpg\meloncat.jpg" alt="Clickable Image" class="centered-image" id="clickableImage">
+        <div class="points">Points: <span id="points">0</span></div>
+    </main>
+    <footer>
+
+    </footer>
+    <script>
+        let points = 0;
+        const pointsDisplay = document.getElementById('points');
+        const clickableImage = document.getElementById('clickableImage');
+
+        // Load points from localStorage
+        function loadPoints() {
+            const savedPoints = localStorage.getItem('points');
+            if (savedPoints !== null) {
+                points = parseInt(savedPoints, 10);
+                pointsDisplay.textContent = points;
+            }
+        }
+
+        // Save points to localStorage
+        function savePoints() {
+            localStorage.setItem('points', points);
+        }
+
+        // Initialize points from localStorage
+        loadPoints();
+
+        clickableImage.addEventListener('click', () => {
+            points += 1;
+            pointsDisplay.textContent = points;
+            savePoints();
+        });
+    </script>
+</body>
+</html>
